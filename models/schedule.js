@@ -18,7 +18,7 @@ const Schedule = loader.database.define(
             type: Sequelize.TEXT,
             allowNull: false
         },
-        createBy: {
+        createdBy: {
             type: Sequelize.INTEGER,
             allowNull: false
         },
@@ -32,7 +32,7 @@ const Schedule = loader.database.define(
         timestamps: false,
         indexes: [
             {
-                fields: ['createBy']
+                fields: ['createdBy']
             }
         ]
     }
