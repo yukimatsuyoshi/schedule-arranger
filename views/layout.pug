@@ -13,10 +13,10 @@ html
       div.navbar-header
         a(href="/").navbar-brand.nav-link 予定調整くん
       ul.navbar-nav
-        if user 
+        if user
           li.nav-item
             a(href="/logout").nav-link #{user.username} をログアウト
-        else 
+        else
           li.nav-item
             a(href="/login").nav-link ログイン
     div.container
