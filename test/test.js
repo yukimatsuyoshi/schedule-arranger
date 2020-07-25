@@ -117,7 +117,7 @@ describe('/schedules/:scheduleId/users/:userId/candidates/:candidateId', () => {
               Candidate.findOne({
                 where: { scheduleId: scheduleId }
               }).then((candidate) => {
-                // 更新がされることをテスト
+                // 更新がされることをテストする
                 request(app)
                   .post(`/schedules/${scheduleId}/users/${0}/candidates/${candidate.candidateId}`)
                   .send({ availability: 2 }) // 出席に更新
