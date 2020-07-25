@@ -8,3 +8,7 @@
 
 ## heroku
 - サーバーURL: https://boiling-escarpment-91610.herokuapp.com/
+
+## Github
+- ClientId: aa27ced9da7e91fe0ef0
+- ClientSecret: 145a9df8cd9aa997d009dae8728749fd969a12f9
