@@ -1,32 +1,26 @@
 version: 2
-
-defaults: &defaults 
-  working_directory: ~/schedule-arranger
-  docker:
-    - image: circleci/node:10.14.2
-
 jobs:
-  setup:
-    <<: *defaults
+  build:
+    docker:
+      - image: circleci/node:10.14.2
+
+    working_directory: ~/schedule-arranger
+
     steps:
       - checkout
+
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
+
       - run: yarn install
+
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - persist_to_workspace:
-          root: ~/schedule_arranger
-          path:
-            - ./*
-  
-  test:
-    <<: *defaults
-    steps:
+        
       - run:
           name: Install JUnit coverage reporter
           command: yarn add --dev jest-junit
@@ -40,13 +34,3 @@ jobs:
           path: ./junit
       - store_artifacts:
           path: ./junit
-
-workflows:
-  version: 2
-  run-test:
-    jobs:
-      - setup:
-      - test:
-        requires:
-          - setup
-
